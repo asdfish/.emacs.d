@@ -1,0 +1,10 @@
+*.elc
+eln-cache/*
+elpa/*
+eshell/*
+projects
+auto-save-list/*
+recentf
+server/*
+transient/*
+tree-sitter/*
