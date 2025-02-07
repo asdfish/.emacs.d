@@ -16,3 +16,5 @@
 (electric-pair-mode t)
 
 (desktop-save-mode 0)
+
+; PATH

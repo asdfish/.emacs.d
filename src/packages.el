@@ -37,10 +37,11 @@
                                             evil-collection
                                             evil-commentary
                                             ivy
+					    magit
                                             markdown-mode
                                             nerd-icons
                                             neotree
-					    origami
+                                            rust-mode
                                             tab-bar-buffers
                                             vim-tab-bar)
        "List of package to ensure are installed")
@@ -117,6 +118,21 @@
        (setq evil-want-keybinding nil)
        :config
        (evil-mode 1)
+
+       (define-key evil-normal-state-map (kbd "C-j") (lambda ()
+						 (interactive)
+
+						 (let ((i 0))
+						   (while (< i 10)
+						     (evil-next-line)
+						     (setq i (+ i 1))))))
+       (define-key evil-normal-state-map (kbd "C-k") (lambda ()
+						 (interactive)
+
+						 (let ((i 0))
+						   (while (< i 10)
+						     (evil-previous-line)
+						     (setq i (+ i 1))))))
        (define-key evil-normal-state-map (kbd "<SPC>tg") 'counsel-rg)
        (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle))
      (use-package evil-collection
@@ -150,6 +166,13 @@
        :defines neo-theme
        :init
        (setq neo-theme 'nerd))
+
+     (use-package rust-mode
+       :after compile-angel
+       :defines rust-cargo-bin rust-mode-treesitter-derive
+       :init
+       (setq rust-cargo-bin "\~/.cargo/bin/cargo")
+       (setq rust-mode-treesitter-derive t))
 
      (use-package tab-bar-buffers
        :after compile-angel
